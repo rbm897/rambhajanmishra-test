@@ -6,6 +6,15 @@ echo "[Swap Optimizer Setup] Starting setup..."
 OS="$(uname -s)"
 
 detect_and_install_node() {
+
+    node_version=$(node -v)
+    existing_version=$(echo $node_version | tr '.' ' ' | awk '{print $1}' | tr 'v' '0' )
+    echo ${existing_version}
+    if [ $existing_version -gt "18" ]; then
+        echo "Compatible node environment"
+    fi
+
+    # v24.3.0 => v24 3 0 => v24 => 024
     if command -v node &>/dev/null && command -v npm &>/dev/null; then
         echo "[INFO] Node.js already installed: $(node -v)"
         echo "[INFO] npm version: $(npm -v)"

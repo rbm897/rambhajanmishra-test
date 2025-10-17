@@ -3,7 +3,14 @@
 REPO_URL="https://github.com/veltrix-capital/test-devops-orchestrators.git"
 REPO_DIR="test-devops-orchestrators"
 
-# Step 1: Clone or update the repository
+git version 
+# Verify if git is installed
+if [ $? != 0 ]; then
+    echo "Need to install git"    
+fi
+    
+
+Step 1: Clone or update the repository
 if [ -d "$REPO_DIR/.git" ]; then
     echo "[+] Repository exists. Pulling latest changes..."
     cd "$REPO_DIR" && git pull
